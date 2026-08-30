@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faizul Rahman M — IT Support Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #141922;
+    --panel: #1c2330;
+    --panel-2: #212a39;
+    --border: #2c3648;
+    --text: #e7ecf3;
+    --text-dim: #8b96ab;
+    --accent: #52d8c4;
+    --accent-dim: #2c6e63;
+    --warn: #e8a94c;
+    --danger: #e2645f;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(82,216,196,0.06), transparent 40%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(20,25,34,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1040px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{
+    font-family:var(--mono); font-weight:700; font-size:14px;
+    letter-spacing:0.06em; color:var(--text); text-decoration:none;
+  }
+  .brand span{color:var(--accent);}
+  nav.links{display:flex; gap:24px; font-family:var(--mono); font-size:12.5px; letter-spacing:0.03em;}
+  nav.links a{color:var(--text-dim); text-decoration:none; transition:color .15s ease;}
+  nav.links a:hover{color:var(--text);}
+  .status-pill{
+    display:flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:11px; color:var(--accent);
+    border:1px solid var(--accent-dim); background:rgba(82,216,196,0.06);
+    padding:6px 10px; border-radius:20px; letter-spacing:0.04em; white-space:nowrap;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 rgba(82,216,196,.6); animation:pulse 2.2s infinite;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(82,216,196,.55);}
+    70%{box-shadow:0 0 0 7px rgba(82,216,196,0);}
+    100%{box-shadow:0 0 0 0 rgba(82,216,196,0);}
+  }
+  @media (max-width:720px){ nav.links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:72px 0 40px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; color:var(--accent);
+    letter-spacing:0.12em; text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"//"; color:var(--accent-dim);}
+  h1{
+    font-family:var(--mono); font-weight:800; letter-spacing:-0.01em;
+    font-size:clamp(34px, 6vw, 58px); line-height:1.05; color:var(--text);
+  }
+  h1 .accent{color:var(--accent);}
+  .role-line{
+    margin-top:16px; color:var(--text-dim); font-size:17px; max-width:600px;
+  }
+  .role-line b{color:var(--text); font-weight:600;}
+  .hero-meta{
+    margin-top:28px; display:flex; flex-wrap:wrap; gap:12px 28px;
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
+  }
+  .hero-meta a{text-decoration:none; color:var(--text-dim); transition:color .15s;}
+  .hero-meta a:hover{color:var(--accent);}
+  .hero-meta span::before{content:"›"; color:var(--accent-dim); margin-right:6px;}
+
+  /* stat strip */
+  .stat-strip{
+    margin-top:40px; display:grid; grid-template-columns:repeat(3,1fr);
+    border:1px solid var(--border); border-radius:10px; overflow:hidden;
+    background:var(--panel);
+  }
+  .stat{padding:20px 22px; border-right:1px solid var(--border);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:var(--mono); font-size:26px; font-weight:700; color:var(--accent);}
+  .stat .label{margin-top:4px; font-size:12px; color:var(--text-dim); letter-spacing:0.02em;}
+  @media (max-width:640px){
+    .stat-strip{grid-template-columns:1fr;}
+    .stat{border-right:none; border-bottom:1px solid var(--border);}
+    .stat:last-child{border-bottom:none;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0;}
+  .section-head{margin-bottom:32px;}
+  .section-tag{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-dim);
+    letter-spacing:0.1em; text-transform:uppercase;
+  }
+  .section-title{
+    font-family:var(--mono); font-size:26px; font-weight:700; margin-top:8px; color:var(--text);
+  }
+  .rule{height:1px; background:linear-gradient(90deg, var(--border), transparent); margin-top:14px;}
+
+  /* ---------- SKILLS / SENSOR GRID ---------- */
+  .sensor-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media (max-width:720px){ .sensor-grid{grid-template-columns:1fr;} }
+  .sensor{
+    border:1px solid var(--border); background:var(--panel); border-radius:10px; padding:20px 22px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .sensor:hover{border-color:var(--accent-dim); transform:translateY(-2px);}
+  .sensor-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+  .sensor-name{font-family:var(--mono); font-weight:600; font-size:13.5px; letter-spacing:0.03em;}
+  .sensor-status{
+    font-family:var(--mono); font-size:10px; color:var(--accent);
+    display:flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .sensor ul{list-style:none;}
+  .sensor li{
+    font-size:13.5px; color:var(--text-dim); padding:6px 0; border-top:1px solid rgba(255,255,255,0.04);
+    display:flex; align-items:center; gap:8px;
+  }
+  .sensor li:first-child{border-top:none;}
+  .sensor li::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--accent-dim); flex-shrink:0;}
+
+  /* ---------- EXPERIENCE / TICKET LOG ---------- */
+  .ticket-meta{
+    display:flex; flex-wrap:wrap; gap:10px 24px; font-family:var(--mono); font-size:12px; color:var(--text-dim);
+    margin-bottom:24px; padding:14px 18px; border:1px solid var(--border); border-radius:8px; background:var(--panel-2);
+  }
+  .ticket-meta b{color:var(--text);}
+  .log{border-left:2px solid var(--border); margin-left:6px; padding-left:26px;}
+  .log-item{position:relative; padding-bottom:26px;}
+  .log-item:last-child{padding-bottom:0;}
+  .log-item::before{
+    content:""; position:absolute; left:-33px; top:4px; width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--accent);
+  }
+  .log-id{font-family:var(--mono); font-size:11px; color:var(--accent); letter-spacing:0.04em;}
+  .log-text{margin-top:6px; font-size:14.5px; color:var(--text-dim); max-width:640px;}
+  .log-text b{color:var(--text); font-weight:600;}
+
+  /* ---------- EDU + LANG ---------- */
+  .two-col{display:grid; grid-template-columns:1.4fr 1fr; gap:16px;}
+  @media (max-width:720px){ .two-col{grid-template-columns:1fr;} }
+  .card{border:1px solid var(--border); background:var(--panel); border-radius:10px; padding:22px 24px;}
+  .card .kicker{font-family:var(--mono); font-size:11px; color:var(--text-dim); letter-spacing:0.08em; text-transform:uppercase;}
+  .card .title{margin-top:10px; font-size:17px; font-weight:600;}
+  .card .sub{margin-top:4px; font-size:13.5px; color:var(--text-dim);}
+  .score-tag{
+    display:inline-block; margin-top:14px; font-family:var(--mono); font-size:12px; color:var(--accent);
+    border:1px solid var(--accent-dim); padding:3px 10px; border-radius:20px; background:rgba(82,216,196,0.06);
+  }
+  .lang-row{display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-top:1px solid rgba(255,255,255,0.05);}
+  .lang-row:first-of-type{border-top:none;}
+  .lang-name{font-size:14px; font-weight:500;}
+  .lang-level{font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:0.04em;}
+
+  /* ---------- CONTACT / TICKET CTA ---------- */
+  .contact-panel{
+    border:1px solid var(--accent-dim); border-radius:12px; padding:44px 36px;
+    background:linear-gradient(160deg, rgba(82,216,196,0.07), rgba(82,216,196,0.01));
+    text-align:center;
+  }
+  .contact-panel .section-tag{color:var(--accent);}
+  .contact-panel h2{
+    font-family:var(--mono); font-size:clamp(24px,4vw,34px); margin-top:10px; font-weight:700;
+  }
+  .contact-panel p{color:var(--text-dim); margin-top:12px; max-width:480px; margin-left:auto; margin-right:auto; font-size:14.5px;}
+  .cta-row{margin-top:28px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.03em; text-decoration:none;
+    padding:12px 22px; border-radius:8px; transition:transform .15s ease, background .15s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{background:var(--accent); color:#0e1a17; font-weight:700;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--border); color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent-dim); transform:translateY(-2px);}
+
+  footer{
+    padding:28px 0 40px; text-align:center; font-family:var(--mono); font-size:11px; color:var(--text-dim);
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">FAIZUL<span>_</span>RAHMAN</a>
+    <nav class="links">
+      <a href="#overview">Overview</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="status-pill"><span class="dot"></span> All systems operational</div>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero" id="overview">
+    <div class="eyebrow">status: available for opportunities</div>
+    <h1>IT Support<br>Engineer <span class="accent">&</span> System Engineer</h1>
+    <p class="role-line">
+      Keeping <b>Active Directory</b>, endpoints and networks running for Desicrew Solutions —
+      hands-on with ticket handling, endpoint security, firewalls, and network monitoring
+      across multiple locations.
+    </p>
+    <div class="hero-meta">
+      <span>Tamil Nadu, India</span>
+      <a href="tel:+918870595612">+91 88705 95612</a>
+      <a href="#contact">Email</a>
+      <a href="#contact">LinkedIn</a>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="num">~2,000</div>
+        <div class="label">Endpoints monitored via Seqrite Console</div>
+      </div>
+      <div class="stat">
+        <div class="num">Dec 2025</div>
+        <div class="label">Current role start date</div>
+      </div>
+      <div class="stat">
+        <div class="num">83%</div>
+        <div class="label">B.Tech, AI &amp; Data Science, 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <div class="section-tag">Sensor tree</div>
+      <div class="section-title">Skills, monitored</div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="sensor-grid">
+      <div class="sensor">
+        <div class="sensor-head">
+          <span class="sensor-name">ACTIVE DIRECTORY</span>
+          <span class="sensor-status"><span class="dot" style="width:6px;height:6px;"></span>up</span>
+        </div>
+        <ul>
+          <li>User account creation &amp; employee code creation</li>
+          <li>Account unlocking &amp; access management</li>
+          <li>Organizational Unit (OU) management</li>
+          <li>Group Policy (GPO) administration</li>
+        </ul>
+      </div>
+
+      <div class="sensor">
+        <div class="sensor-head">
+          <span class="sensor-name">ENDPOINT SECURITY</span>
+          <span class="sensor-status"><span class="dot" style="width:6px;height:6px;"></span>up</span>
+        </div>
+        <ul>
+          <li>Seqrite Console — endpoint management</li>
+          <li>Endpoint monitoring &amp; security status checks</li>
+          <li>Security policy management</li>
+          <li>Endpoint troubleshooting</li>
+        </ul>
+      </div>
+
+      <div class="sensor">
+        <div class="sensor-head">
+          <span class="sensor-name">NETWORKING</span>
+          <span class="sensor-status"><span class="dot" style="width:6px;height:6px;"></span>up</span>
+        </div>
+        <ul>
+          <li>Firewall management</li>
+          <li>LAN/WAN, TCP/IP, DNS, DHCP</li>
+          <li>ISP support &amp; connectivity troubleshooting</li>
+          <li>Network troubleshooting across locations</li>
+        </ul>
+      </div>
+
+      <div class="sensor">
+        <div class="sensor-head">
+          <span class="sensor-name">MONITORING &amp; SUPPORT</span>
+          <span class="sensor-status"><span class="dot" style="width:6px;height:6px;"></span>up</span>
+        </div>
+        <ul>
+          <li>PRTG Network Monitor — sensor configuration</li>
+          <li>Bandwidth monitoring</li>
+          <li>Ticket handling &amp; incident management</li>
+          <li>Windows &amp; basic Linux command-line troubleshooting</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <div class="section-tag">Incident log</div>
+      <div class="section-title">Experience</div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="ticket-meta">
+      <span><b>Role:</b> IT Support Engineer / System Engineer</span>
+      <span><b>Org:</b> Desicrew Solutions Private Limited</span>
+      <span><b>Duration:</b> December 2025 – Present</span>
+    </div>
+
+    <div class="log">
+      <div class="log-item">
+        <div class="log-id">TICKET-001 · Daily support</div>
+        <div class="log-text">Handle daily IT support tickets and resolve employee issues related to <b>systems, applications, user accounts</b>, and network connectivity.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-002 · Technical support</div>
+        <div class="log-text">Provide technical support for <b>hardware, software, operating system</b>, and basic network-related issues.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-003 · Identity &amp; access</div>
+        <div class="log-text">Manage <b>Active Directory</b> user accounts — creation, employee code creation, account unlocking, and access management.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-004 · Policy administration</div>
+        <div class="log-text">Manage <b>Organizational Units (OU)</b> and perform <b>Group Policy (GPO)</b> administration based on organizational requirements.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-005 · Onboarding / offboarding</div>
+        <div class="log-text">Support employee onboarding and offboarding, including account creation and access management.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-006 · Endpoint fleet</div>
+        <div class="log-text">Manage and monitor <b>~2,000 endpoints</b> using Seqrite Console, including endpoint security status and related issues.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-007 · Perimeter &amp; connectivity</div>
+        <div class="log-text">Support <b>firewall management</b> and troubleshoot internet, network, and connectivity issues across organizational locations.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-008 · Network monitoring</div>
+        <div class="log-text">Monitor network connectivity and ISP bandwidth using <b>PRTG Network Monitor</b>, creating sensors based on monitoring requirements.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-009 · Vendor coordination</div>
+        <div class="log-text">Coordinate with ISPs and vendors to resolve network, connectivity, hardware, and infrastructure issues.</div>
+      </div>
+      <div class="log-item">
+        <div class="log-id">TICKET-010 · Documentation</div>
+        <div class="log-text">Perform basic troubleshooting using <b>Linux command-line</b> tools and maintain documentation of incidents and resolutions.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <div class="section-tag">Configuration</div>
+      <div class="section-title">Education &amp; languages</div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="kicker">Degree</div>
+        <div class="title">B.Tech — Artificial Intelligence and Data Science</div>
+        <div class="sub">Sir Issac Newton College of Engineering and Technology, Nagapattinam · 2025</div>
+        <span class="score-tag">83% aggregate</span>
+      </div>
+      <div class="card">
+        <div class="kicker">Languages</div>
+        <div class="lang-row">
+          <span class="lang-name">English</span>
+          <span class="lang-level">Fluent</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Tamil</span>
+          <span class="lang-level">Native</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-panel">
+      <div class="section-tag">Open a ticket</div>
+      <h2>Let's talk shop.</h2>
+      <p>Open to IT support, system administration, and network operations roles. Reach out below — response time is fast, uptime is high.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+918870595612">Call +91 88705 95612</a>
+        <a class="btn btn-ghost" href="#">Email me</a>
+        <a class="btn btn-ghost" href="#">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  FAIZUL RAHMAN M — IT SUPPORT ENGINEER / SYSTEM ENGINEER — TAMIL NADU, INDIA
+</footer>
+
+</body>
+</html>
